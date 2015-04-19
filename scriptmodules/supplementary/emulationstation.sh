@@ -88,12 +88,13 @@ function emustation_configureInputConfigScripts() {
   <inputAction type="onfinish">
     <command>sudo /opt/retropie/supplementary/emulationstation/scripts/inputconfiguration.sh</command>
   </inputAction>    
+</inputList>
 _EOF_
     chown $user:$user "$home"/.emulationstation/es_input.cfg
     if [[ ! -d "$md_inst/scripts/" ]]; then
         mkdir "$md_inst/scripts/"
     fi
     chmod +x "$scriptdir/supplementary/moduledata/supplementary/emulationstation/inputconfiguration.sh"
-    cp "$scriptdir/supplementary/moduledata/supplementary/emulationstation/*" "$md_inst/scripts/"
+    cp -r "$scriptdir"/supplementary/moduledata/supplementary/emulationstation/* "$md_inst/scripts/"
     chown -R $user:$user "$md_inst/scripts/"
 }
