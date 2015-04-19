@@ -40,7 +40,6 @@ function install_emulationstation() {
         'README.md'
         'THEMES.md'
     )
-
 }
 
 function configure_emulationstation() {
@@ -76,4 +75,22 @@ _EOF_
     iniSet "overscan_scale" 1
 
     mkdir -p "/etc/emulationstation"
+
+    emustation_configureInputConfigScripts
+}
+
+function emustation_configureInputConfigScripts() {
+    mkdir -p "$home"/.emulationstation/
+    cat > /usr/bin/emulationstation << _EOF_
+<?xml version="1.0"?>
+<inputList>
+  <inputAction type="onfinish">
+    <command>sudo /opt/retropie/supplementary/emulationstation/scripts/inputconfiguration.sh</command>
+  </inputAction>    
+_EOF_
+    chown $user:$user "$home"/.emulationstation/es_input.cfg
+    mkdir "$md_inst/scripts/"
+    chmod +x "$scriptdir/supplementary/moduledate/supplementary/emulationstation/inputconfiguration.sh"
+    cp "$scriptdir/supplementary/moduledate/supplementary/emulationstation/*" "$md_inst/scripts/"
+    chown -R $user:$user "$md_inst/scripts/*"
 }
