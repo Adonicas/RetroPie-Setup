@@ -20,7 +20,8 @@ function depends_emulationstation() {
 }
 
 function sources_emulationstation() {
-    gitPullOrClone "$md_build" "https://github.com/Aloshi/EmulationStation"
+    gitPullOrClone "$md_build" "https://github.com/petrockblog/EmulationStation"
+    git checkout unstable
 }
 
 function build_emulationstation() {
