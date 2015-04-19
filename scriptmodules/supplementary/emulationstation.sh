@@ -91,7 +91,7 @@ function emustation_configureInputConfigScripts() {
 _EOF_
     chown $user:$user "$home"/.emulationstation/es_input.cfg
     mkdir "$md_inst/scripts/"
-    chmod +x "$scriptdir/supplementary/moduledate/supplementary/emulationstation/inputconfiguration.sh"
-    cp "$scriptdir/supplementary/moduledate/supplementary/emulationstation/*" "$md_inst/scripts/"
+    chmod +x "$scriptdir/supplementary/moduledata/supplementary/emulationstation/inputconfiguration.sh"
+    cp "$scriptdir/supplementary/moduledata/supplementary/emulationstation/*" "$md_inst/scripts/"
     chown -R $user:$user "$md_inst/scripts/*"
 }
